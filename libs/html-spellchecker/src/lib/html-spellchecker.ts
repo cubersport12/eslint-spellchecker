@@ -7,18 +7,41 @@ const meta: Rule.RuleMetaData = {
     category: 'Best Practices',
     recommended: true
   },
-  fixable: null,
-  schema: [],
+  schema: [
+    {
+      type: 'object',
+      properties: {
+        matchWordRegex: { type: 'string' },
+        dicPath: { type: 'string' }
+      }
+    }
+  ],
   type: 'problem',
   hasSuggestions: true
 };
 
+const getDefaultOptions = () => ({
+  matchWordRegex: '[А-Яа-я]+',
+  dicPath: undefined
+});
+
 const create = (context: Rule.RuleContext) => {
+  const options: ReturnType<typeof getDefaultOptions> = Object.assign(
+    getDefaultOptions(),
+    { ...(context.options[0] || {}) }
+  );
+  if (!options.dicPath) {
+    throw new Error('dicPath not found');
+  }
   return {
     [['Text', 'AttributeValue'].join(',')](
       node: TextNode | AttributeValueNode
     ) {
-      console.info('---------------------- node', node.value);
+      const regex = new RegExp(options.matchWordRegex, 'g');
+      const result = node.value.match(regex)?.filter((x) => Boolean(x));
+      if (!result || result.length === 0) {
+        return;
+      }
     }
   };
 };

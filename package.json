@@ -9,6 +9,7 @@
     "@typescript-eslint/rule-tester": "^6.10.0",
     "@typescript-eslint/utils": "^6.10.0",
     "axios": "^1.0.0",
+    "hunspell-spellchecker": "^1.0.2",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

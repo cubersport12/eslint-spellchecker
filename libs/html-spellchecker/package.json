@@ -1,0 +1,9 @@
+{
+  "name": "html-spellchecker",
+  "version": "0.0.1",
+  "main": "./src/index.js",
+  "type": "commonjs",
+  "dependencies": {
+    "hunspell-spellchecker": "^1.0.2"
+  }
+}

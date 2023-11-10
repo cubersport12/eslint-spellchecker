@@ -32,7 +32,18 @@ const ruleTester = RuleTester.createRuleTester();
 ruleTester.run('SpecllcheckRule', SpellcheckRule, {
   valid: [
     {
-      code: `<div title="Заголовок">Правильно написан</div>`
+      code: `<div title="Заголовок">
+        Правильно написан
+        <button>
+          Закрыть
+          <i class="far fa-times"></i>
+        </button>
+      </div>`,
+      options: [
+        {
+          dicPath: 'C:/adasd/'
+        }
+      ]
     }
   ],
   invalid: []

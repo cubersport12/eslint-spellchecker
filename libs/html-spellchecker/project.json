@@ -17,6 +17,23 @@
       "options": {
         "jestConfig": "libs/html-spellchecker/jest.config.ts"
       }
+    },
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/html-spellchecker",
+        "tsConfig": "libs/html-spellchecker/tsconfig.lib.json",
+        "packageJson": "libs/html-spellchecker/package.json",
+        "main": "libs/html-spellchecker/src/index.ts",
+        "assets": [],
+        "buildTarget": "html-spellchecker:build:production"
+      },
+      "configurations": {
+        "production": {
+          "optimization": true
+        }
+      }
     }
   },
   "tags": []
