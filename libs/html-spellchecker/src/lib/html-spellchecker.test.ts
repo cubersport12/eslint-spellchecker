@@ -41,7 +41,7 @@ ruleTester.run('SpecllcheckRule', SpellcheckRule, {
       </div>`,
       options: [
         {
-          dicPath: 'C:/adasd/'
+          dicFolder: './dics/ru'
         }
       ]
     }

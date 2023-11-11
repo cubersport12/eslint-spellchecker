@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "moduleResolution": "nodenext",
+    "esModuleInterop": true,
     "module": "nodenext",
     "types": ["jest", "node"]
   },
