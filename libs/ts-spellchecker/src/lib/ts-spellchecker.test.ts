@@ -1,6 +1,6 @@
 
 import { RuleTester as ESLintRuleTester } from 'eslint';
-import { TsSpellschekerRule } from './ts-spellchecker';
+import { TsSpellchekerRule } from './ts-spellchecker';
 
 const FILE_NAME = 'test.html';
 
@@ -30,7 +30,7 @@ export class RuleTester extends ESLintRuleTester {
 
 const ruleTester = RuleTester.createRuleTester();
 
-ruleTester.run('TsSpecllcheckRule', TsSpellschekerRule, {
+ruleTester.run('TsSpecllcheckRule', TsSpellchekerRule, {
   valid: [
     {
       code: `const testFunction = (text: string) => {

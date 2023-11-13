@@ -1,7 +1,7 @@
-import { HtmlSpellcheckRule } from "./lib/html-spellchecker";
+import { HtmlSpellcheckerRule } from "./lib/html-spellchecker";
 
 module.exports = {
   rules: {
-    'html-spellchecker': HtmlSpellcheckRule
+    'html-spellchecker': HtmlSpellcheckerRule
   }
 }

@@ -1,1 +1,7 @@
-export * from './lib/ts-spellchecker';
+import { TsSpellchekerRule } from './lib/ts-spellchecker'
+
+module.exports = {
+    rules: {
+        'ts-spellchecker': TsSpellchekerRule
+    }
+}
