@@ -1,4 +1,4 @@
-import { SpellcheckRule } from './html-spellchecker';
+import { HtmlSpellcheckRule } from './html-spellchecker';
 import { RuleTester as ESLintRuleTester } from 'eslint';
 
 const FILE_NAME = 'test.html';
@@ -29,7 +29,7 @@ export class RuleTester extends ESLintRuleTester {
 
 const ruleTester = RuleTester.createRuleTester();
 
-ruleTester.run('SpecllcheckRule', SpellcheckRule, {
+ruleTester.run('SpecllcheckRule', HtmlSpellcheckRule, {
   valid: [
     {
       code: `<div title="Заголовок">

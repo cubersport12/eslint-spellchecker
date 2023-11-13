@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Rule } from 'eslint';
-import type { TextNode, AttributeValueNode } from 'es-html-parser';
+import type { AttributeValueNode, TextNode } from 'es-html-parser';
 import Spellchecker from 'hunspell-spellchecker';
 import { dirname, join, relative } from 'path';
 import { readFileSync } from 'fs';
@@ -33,13 +33,15 @@ type OptionsType = {
 
 const loadHunspellDic = (options: OptionsType) => {
   const spellchecker = new Spellchecker();
-  const rootFolder = dirname(require.main?.filename ?? '');
+  const dname = dirname(require.main?.filename ?? '');
+
+  const rootFolder = join(dname, relative(dname, options.dicFolder));
   const dict = spellchecker.parse({
     aff: readFileSync(
-      relative(rootFolder, join(options.dicFolder, `${options.dicName}.aff`))
+      join(rootFolder, `${options.dicName}.aff`)
     ),
     dic: readFileSync(
-      relative(rootFolder, join(options.dicFolder, `${options.dicName}.dic`))
+      join(rootFolder, `${options.dicName}.dic`)
     )
   });
   spellchecker.use(dict);
@@ -53,7 +55,6 @@ const create = (context: Rule.RuleContext) => {
   }
   const dic = loadHunspellDic(options);
   const wordsCache = new Set<string>();
-  console.info('-----------------', dic);
   return {
     [['Text', 'AttributeValue'].join(',')](
       node: TextNode | AttributeValueNode
@@ -63,12 +64,12 @@ const create = (context: Rule.RuleContext) => {
       if (!result || result.length === 0) {
         return;
       }
-      result.forEach((r) => {
+      result.map(x => x.toLowerCase()).forEach((r) => {
         if (wordsCache.has(r)) {
           return;
         }
         wordsCache.add(r);
-        if (!dic.check(r)) {
+        if (!dic.checkExact(r)) {
           context.report({
             node: node as any,
             message: `Нет слова в словаре "${r}"`
@@ -79,7 +80,7 @@ const create = (context: Rule.RuleContext) => {
   };
 };
 
-export const SpellcheckRule: Rule.RuleModule = {
+export const HtmlSpellcheckRule: Rule.RuleModule = {
   create: create as any,
   meta
 };
