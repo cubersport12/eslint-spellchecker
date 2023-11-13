@@ -1,5 +1,5 @@
 {
-  "name": "html-spellchecker",
+  "name": "eslint-plugin-html-spellchecker",
   "version": "0.0.1",
   "main": "./src/index.js",
   "type": "commonjs",

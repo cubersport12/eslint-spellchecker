@@ -19,10 +19,10 @@
       }
     },
     "build": {
-      "executor": "@nx/esbuild:esbuild",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/html-spellchecker",
+        "outputPath": "dist/libs/eslint-plugin-html-spellchecker",
         "tsConfig": "libs/html-spellchecker/tsconfig.lib.json",
         "packageJson": "libs/html-spellchecker/package.json",
         "main": "libs/html-spellchecker/src/index.ts",

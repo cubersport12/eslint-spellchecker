@@ -1,13 +1,11 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "moduleResolution": "nodenext",
-    "module": "nodenext",
+    "module": "commonjs",
     "outDir": "../../dist/out-tsc",
     "declaration": true,
     "types": ["node"],
-    "strict": true,
-    "esModuleInterop": true
+    "strict": true
   },
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
   "include": ["src/**/*.ts"]

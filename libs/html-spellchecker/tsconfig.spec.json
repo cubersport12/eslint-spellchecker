@@ -2,9 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "moduleResolution": "nodenext",
     "esModuleInterop": true,
-    "module": "nodenext",
+    "module": "commonjs",
     "types": ["jest", "node"]
   },
   "include": [

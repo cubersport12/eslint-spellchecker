@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Rule } from 'eslint';
 import type { AttributeValueNode, TextNode } from 'es-html-parser';
-import Spellchecker from 'hunspell-spellchecker';
+const Spellchecker = require('hunspell-spellchecker');
 import { dirname, join, relative } from 'path';
 import { readFileSync } from 'fs';
 
@@ -47,14 +47,18 @@ const loadHunspellDic = (options: OptionsType) => {
   spellchecker.use(dict);
   return spellchecker;
 };
+let dic: any;
+const wordsCache = new Set<string>();
 
 const create = (context: Rule.RuleContext) => {
   const options: OptionsType = context.options[0];
   if (!options.dicFolder) {
     throw new Error('dicPath not found');
   }
-  const dic = loadHunspellDic(options);
-  const wordsCache = new Set<string>();
+  if (!dic) {
+    dic = loadHunspellDic(options);
+  }
+
   return {
     [['Text', 'AttributeValue'].join(',')](
       node: TextNode | AttributeValueNode
