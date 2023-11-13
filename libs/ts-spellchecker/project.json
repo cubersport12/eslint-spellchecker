@@ -17,6 +17,23 @@
       "options": {
         "jestConfig": "libs/ts-spellchecker/jest.config.ts"
       }
+    },
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/eslint-plugin-ts-spellchecker",
+        "tsConfig": "libs/ts-spellchecker/tsconfig.lib.json",
+        "packageJson": "libs/ts-spellchecker/package.json",
+        "main": "libs/ts-spellchecker/src/index.ts",
+        "assets": [],
+        "buildTarget": "ts-spellchecker:build:production"
+      },
+      "configurations": {
+        "production": {
+          "optimization": true
+        }
+      }
     }
   },
   "tags": []

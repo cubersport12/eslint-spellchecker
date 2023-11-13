@@ -1,5 +1,6 @@
-import { HtmlSpellcheckRule } from './html-spellchecker';
+
 import { RuleTester as ESLintRuleTester } from 'eslint';
+import { TsSpellschekerRule } from './ts-spellchecker';
 
 const FILE_NAME = 'test.html';
 
@@ -22,24 +23,23 @@ export class RuleTester extends ESLintRuleTester {
 
   public static createRuleTester() {
     return new RuleTester({
-      parser: require.resolve('@html-eslint/parser')
+      parser: require.resolve('@typescript-eslint/parser')
     });
   }
 }
 
 const ruleTester = RuleTester.createRuleTester();
 
-ruleTester.run('HtmlSpecllcheckRule', HtmlSpellcheckRule, {
+ruleTester.run('TsSpecllcheckRule', TsSpellschekerRule, {
   valid: [
     {
-      code: `<div title="Заголовок">
-      
-        Правильно написан
-        <button>
-          Закрыть
-          <i class="far fa-times"></i>
-        </button>
-      </div>`,
+      code: `const testFunction = (text: string) => {
+        const obj = {
+          desc: 'Тупо описание'
+        }
+        const x: 'Круто' | 'Не круто' = 'Круто';
+        return x + '_нормально';
+      }`,
       options: [
         {
           dicFolder: './dics/ru'

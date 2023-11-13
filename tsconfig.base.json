@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@shared": ["libs/shared"],
       "@eslint-spellchecker-plugin/html-spellchecker": [
         "libs/html-spellchecker/src/index.ts"
       ],
