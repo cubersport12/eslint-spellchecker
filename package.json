@@ -2,7 +2,10 @@
   "name": "@eslint-spellchecker-plugin/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "ts-spellchecker:prod": "nx run ts-spellchecker:build:production",
+    "html-spellchecker:prod": "nx run html-spellchecker:build:production"
+  },
   "private": true,
   "dependencies": {
     "@html-eslint/parser": "^0.20.0",
